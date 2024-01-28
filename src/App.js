@@ -7,15 +7,20 @@ const App = () => {
   const [candidates, setCandidates] = useState([]);
   const [submitted, setSubmitted] = useState(false);
   const [winners, setWinners] = useState([]);
+  const [showCandidateForm, setShowCandidateForm] = useState(false);
 
   const handleNumCandidatesChange = (e) => {
     setNumCandidates(parseInt(e.target.value));
-    const newCandidates = Array.from({ length: parseInt(e.target.value) }, (_, index) => ({
+  };
+
+  const handleStartVoting = () => {
+    const newCandidates = Array.from({ length: numCandidates }, (_, index) => ({
       id: index + 1,
       name: '',
       votes: 0
     }));
     setCandidates(newCandidates);
+    setShowCandidateForm(true);
   };
 
   const handleCandidateNameChange = (e, id) => {
@@ -57,12 +62,17 @@ const App = () => {
   return (
     <div className="container">
       <h1>Elect Ease</h1>
-      <label htmlFor="numCandidates">Number of Candidates:</label>
-      <input type="number" id="numCandidates" value={numCandidates} onChange={handleNumCandidatesChange} />
-      {numCandidates > 0 && !submitted && (
+      {!showCandidateForm && (
+        <div>
+          <label htmlFor="numCandidates">Number of Candidates:</label>
+          <input type="number" id="numCandidates" value={numCandidates} onChange={handleNumCandidatesChange} />
+          <button onClick={handleStartVoting}>Start Voting</button>
+        </div>
+      )}
+      {showCandidateForm && !submitted && (
         <div>
           <CandidateList candidates={candidates} handleVote={handleVote} handleCandidateNameChange={handleCandidateNameChange} />
-          <button onClick={handleSubmit}>Submit Vote</button>
+          <button onClick={handleSubmit}>Show Results</button>
         </div>
       )}
       {submitted && (

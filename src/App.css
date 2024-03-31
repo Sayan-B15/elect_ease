@@ -1,190 +1,119 @@
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #111; /* Dark background color */
-  color: #f5f5f5; /* Light text color */
-  margin: 0;
+  background-color: #f0f2f5;
+  color: #333;
+  font-family: Arial, sans-serif;
 }
 
-.container {
-  text-align: center;
-  transition: background-color 0.5s, color 0.5s; /* Smooth transition for background and text color */
+.App {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  color: inherit; /* Inherit color from the parent element */
-  font-size: 48px;
-  margin-bottom: 40px;
-  font-family: 'Open Sans', sans-serif;
-}
-
-input[type="text"],
-input[type="number"] {
-  width: 300px; /* Adjust width as needed */
-  padding: 15px;
+  font-size: 36px;
   margin-bottom: 20px;
-  border: 2px solid #007bff; /* Darker blue border color */
-  border-radius: 25px; /* Rounded corners */
-  outline: none;
-  background-color: #333; /* Dark background color */
-  color: #f5f5f5; /* Light text color */
-  font-size: 18px;
-  transition: border-color 0.3s ease; /* Smooth transition for border color */
+  color: #333;
 }
 
-input[type="text"]:focus,
-input[type="number"]:focus {
-  border-color: #0056b3; /* Darker blue border color on focus */
+.candidate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
 
 label {
-  font-size: 24px; /* Increase font size */
-  color: #f5f5f5; /* Light text color */
-  margin-right: 10px;
-  display: block; /* Ensure label occupies full width */
-  margin-bottom: 10px; /* Add some space below the label */
+  flex: 1;
+  display: block;
+  font-size: 18px;
+  margin-bottom: 8px;
 }
 
-button {
-  background-color: #007bff; /* Dark blue button background color */
-  color: #fff; /* White text color */
-  padding: 15px 30px;
-  border: none;
-  border-radius: 25px; /* Rounded corners */
+input[type="number"],
+input[type="text"] {
+  width: calc(100% - 24px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.voteButton{
+  padding: 12px 24px;
   cursor: pointer;
-  font-size: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
   transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #0056b3; /* Darker blue button background color on hover */
+.showResultButton {
+  padding: 12px 24px;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.voteButton:hover{
+  background-color: #ff0808;
+}
+
+.showResultButton:hover {
+  background-color: #59ff00;
 }
 
 ul {
-  list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 li {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-top: 20px;
   font-size: 24px;
+  color: #333;
 }
 
-.voteTally {
-  margin-top: 60px;
-  padding: 40px;
-  background-color: #333; /* Dark background color */
-  color: #f5f5f5; /* Light text color */
-  border-radius: 20px;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
-  animation: fadeIn 1s ease-in-out, scaleIn 0.5s ease-in-out;
+/* Animations */
+.result-enter {
+  opacity: 0;
 }
 
-.voteTally h2 {
-  font-size: 40px;
-  margin-bottom: 30px;
-  color: #f5f5f5; /* Light text color */
+.result-enter-active {
+  opacity: 1;
+  transition: opacity 500ms;
 }
 
-.voteTally li {
-  font-size: 24px;
-  padding: 20px;
-  background-color: #111; /* Dark background color */
-  color: #f5f5f5; /* Light text color */
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
-  animation: fadeIn 1s ease-in-out, slideInLeft 0.5s ease-in-out;
+.result-exit {
+  opacity: 1;
 }
 
-.winnerSection {
-  margin-top: 60px;
-  padding: 40px;
-  background-color: #4caf50; /* Light green background color */
-  color: #fff; /* White text color */
-  border-radius: 20px;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
-  animation: fadeIn 1s ease-in-out, slideInRight 0.5s ease-in-out;
+.result-exit-active {
+  opacity: 0;
+  transition: opacity 500ms;
 }
 
-.winnerSection h2 {
-  font-size: 45px;
-  margin-bottom: 30px;
-  color: #fff; /* White text color */
+/* Dark mode styles */
+input[type="number"],
+input[type="text"],
+button {
+  background-color: #f0f2f5;
+  color: #333;
 }
 
-.winnerSection p {
-  font-size: 32px;
-  color: #fff; /* White text color */
-  font-weight: bold;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    transform: translateX(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    transform: translateX(50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Adjustments for desktop and smartphones */
-
-/* For desktop screens */
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px; /* Set a maximum width for better readability */
-    margin: 0 auto; /* Center the container horizontally */
-    padding: 0 20px; /* Add some padding to the sides */
-  }
-
-  input[type="text"],
-  input[type="number"] {
-    width: 100%; /* Make input fields take full width of the container */
-    max-width: 400px; /* Limit maximum width to avoid stretching on larger screens */
-  }
-}
-
-/* For smartphones */
-@media (max-width: 576px) {
-  input[type="text"],
-  input[type="number"] {
-    width: calc(100% - 40px); /* Subtract padding and margin from the width */
-    max-width: calc(100% - 40px); /* Subtract padding and margin from the maximum width */
-    margin: 0 auto; /* Center the input fields horizontally */
-  }
+button:hover {
+  background-color: #ccc;
 }

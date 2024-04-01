@@ -44,7 +44,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Voting App</h1>
+      <h1>Elect Ease</h1>
       {!showResults && (
         <>
           {!numCandidates ? (
@@ -64,7 +64,7 @@ function App() {
                 </div>
               ))}
               <br />
-              <button onClick={showResult} className="showResultButton">Show Results</button>
+              <button onClick={showResult} className="showResultButton">Result</button>
             </>
           )}
         </>

@@ -1,5 +1,5 @@
 body {
-  background-color: #f0f2f5;
+  background-image: url(bg.jpg);
   color: #333;
   font-family: Arial, sans-serif;
 }
@@ -14,10 +14,14 @@ body {
 }
 
 h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
-  color: #333;
-}
+  color: #ff624e;
+  font-family: arial, sans-serif;
+  font-size: 45px;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 1px;
+  text-align: center;
+  }
 
 .candidate {
   display: flex;
